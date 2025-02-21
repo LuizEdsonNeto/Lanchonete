@@ -129,18 +129,18 @@ def Clientes():
         else:
             print("Opção inválida!\n")
 
-def Carnes():
+def Lanches():
     while True:
         print("----------------------------------------\n")
-        opcao = int(input("Digite uma opção do MENU CARNES: "))
+        opcao = int(input("Digite uma opção do MENU LANCHES: "))
         print("\n")
         if opcao == 1:
             while True:
-                nome = input("Digite o nome da carne: ")
-                preco = input("Digite o preco da carne: ")
+                nome = input("Digite o nome do lanche: ")
+                preco = input("Digite o preco do lanche: ")
 
-                if os.path.exists("Arquivos/Carnes.csv"):
-                    with open('Arquivos/Carnes.csv', 'r', newline='', encoding='utf-8') as arquivo:
+                if os.path.exists("Arquivos/Lanches.csv"):
+                    with open('Arquivos/Lanches.csv', 'r', newline='', encoding='utf-8') as arquivo:
                         dados = csv.reader(arquivo)
 
                         encontrado = False
@@ -150,15 +150,15 @@ def Carnes():
                                 break
 
                     if encontrado == True:
-                        print("\nCarne já cadastrada!")
+                        print("\nLanche já cadastrada!")
                     else:
                         dados = [nome, preco]
-                        with open('Arquivos/Carnes.csv', 'a', newline='', encoding='utf-8') as arquivo:
+                        with open('Arquivos/Lanches.csv', 'a', newline='', encoding='utf-8') as arquivo:
                             dado = csv.writer(arquivo)
                             dado.writerow(dados)
                 else:
                     dados = [nome, preco]
-                    with open('Arquivos/Carnes.csv', 'w', newline='', encoding='utf-8') as arquivo:
+                    with open('Arquivos/Lanches.csv', 'w', newline='', encoding='utf-8') as arquivo:
                         dado = csv.writer(arquivo)
                         dado.writerow(dados)
 
@@ -168,25 +168,25 @@ def Carnes():
                     break
             print("Inclusão feita com sucesso!\n")
         elif opcao == 2:
-            if os.path.exists("Arquivos/Carnes.csv"):
+            if os.path.exists("Arquivos/Lanches.csv"):
                 while True:
-                    with open('Arquivos/Carnes.csv', 'r', newline='', encoding='utf-8') as arquivo:
+                    with open('Arquivos/Lanches.csv', 'r', newline='', encoding='utf-8') as arquivo:
                         r = csv.reader(arquivo)
 
                         dados = [x for x in r]
 
-                    nome = input("Digite o nome da carne que terá o preço alterado: ")
+                    nome = input("Digite o nome do lanche que terá o preço alterado: ")
 
                     encontrado = False
                     for x in dados:
                         if x[0] == nome:
-                            x[1] = input("\nDigite o novo preço da carne: ")
+                            x[1] = input("\nDigite o novo preço do lanche: ")
                             encontrado = True
 
                     if encontrado != True:
-                        print("\nCarne não cadastrada!\n")
+                        print("\nLanche não cadastrada!\n")
                     else:
-                        with open('Arquivos/Carnes.csv', 'w', newline='', encoding='utf-8') as arquivo:
+                        with open('Arquivos/Lanches.csv', 'w', newline='', encoding='utf-8') as arquivo:
                             w = csv.writer(arquivo)
                             w.writerows(dados)
                         print("\nAlteração feita com sucesso!\n")
@@ -196,25 +196,25 @@ def Carnes():
                     if continuar == 'N':
                         break
             else:
-                print("Nenhuma carne e preço cadastrados!\n")
+                print("Nenhum lanche e preço cadastrados!\n")
         elif opcao == 3:
-            if os.path.exists("Arquivos/Carnes.csv"):
-                with open('Arquivos/Carnes.csv', 'r', newline='', encoding='utf-8') as arquivo:
+            if os.path.exists("Arquivos/Lanches.csv"):
+                with open('Arquivos/Lanches.csv', 'r', newline='', encoding='utf-8') as arquivo:
                     dados = csv.reader(arquivo)
 
                     for x in dados:
-                        print(f"Carne: {x[0]}, Preço: R$ {x[1]}\n")
+                        print(f"Lanches: {x[0]}, Preço: R$ {x[1]}\n")
             else:
-                print("Nenhuma carne e preço cadastrados!\n")
+                print("Nenhum lanche e preço cadastrados!\n")
         elif opcao == 4:
-            if os.path.exists("Arquivos/Carnes.csv"):
+            if os.path.exists("Arquivos/Lanches.csv"):
                 while True:
-                    nome = input("Digite o nome da carne que será apagada: ")
+                    nome = input("Digite o nome do lanche que será apagado: ")
 
                     dados = []
                     encontrado = False
 
-                    with open('Arquivos/Carnes.csv', 'r', newline='', encoding='utf-8') as arquivo:
+                    with open('Arquivos/Lanches.csv', 'r', newline='', encoding='utf-8') as arquivo:
                         r = csv.reader(arquivo)
                         for x in r:
                             if x[0] == nome:
@@ -222,9 +222,9 @@ def Carnes():
                             else:
                                 dados.append(x)
                     if not encontrado:
-                        print("\nCarne não cadastrada!\n")
+                        print("\nLanche não cadastrada!\n")
                     else:
-                        with open('Arquivos/Carnes.csv', 'w', newline='', encoding='utf-8') as arquivo:
+                        with open('Arquivos/Lanches.csv', 'w', newline='', encoding='utf-8') as arquivo:
                             w = csv.writer(arquivo)
                             w.writerows(dados)
                         print("\nExclusão feita com sucesso!\n")
@@ -234,121 +234,9 @@ def Carnes():
                     if continuar == 'N':
                         break
             else:
-                print("Nenhuma carne e preço cadastrados!\n")
+                print("Nenhum lanche e preço cadastrados!\n")
         elif opcao == 5:
-            print("SAINDO DO MENU CARNES\n")
-            break
-        else:
-            print("Opção inválida!\n")
-
-def Acompanhamentos():
-    while True:
-        print("----------------------------------------\n")
-        opcao = int(input("Digite uma opção do MENU ACOMPANHAMENTOS: "))
-        print("\n")
-        if opcao == 1:
-            while True:
-                nome = input("Digite o nome do acompanhamento: ")
-                preco = input("Digite o preco do acompanhamento: ")
-
-                if os.path.exists("Arquivos/Acompanhamentos.csv"):
-                    with open('Arquivos/Acompanhamentos.csv', 'r', newline='', encoding='utf-8') as arquivo:
-                        dados = csv.reader(arquivo)
-
-                        encontrado = False
-                        for x in dados:
-                            if x[0] == nome:
-                                encontrado = True
-                                break
-
-                    if encontrado == True:
-                        print("\nAcompanhamento já cadastrado!")
-                    else:
-                        dados = [nome, preco]
-                        with open('Arquivos/Acompanhamentos.csv', 'a', newline='', encoding='utf-8') as arquivo:
-                            dado = csv.writer(arquivo)
-                            dado.writerow(dados)
-                else:
-                    dados = [nome, preco]
-                    with open('Arquivos/Acompanhamentos.csv', 'w', newline='', encoding='utf-8') as arquivo:
-                        dado = csv.writer(arquivo)
-                        dado.writerow(dados)
-
-                continuar = input("\nDeseja continuar (S ou N): ")
-                print("")
-                if continuar == 'N':
-                    break
-            print("Inclusão feita com sucesso!\n")
-        elif opcao == 2:
-            if os.path.exists("Arquivos/Acompanhamentos.csv"):
-                while True:
-                    with open('Arquivos/Acompanhamentos.csv', 'r', newline='', encoding='utf-8') as arquivo:
-                        r = csv.reader(arquivo)
-
-                        dados = [x for x in r]
-
-                    nome = input("Digite o nome do acompanhamento que terá o preço alterado: ")
-
-                    encontrado = False
-                    for x in dados:
-                        if x[0] == nome:
-                            x[1] = input("\nDigite o novo preço do acompanhamento: ")
-                            encontrado = True
-
-                    if encontrado != True:
-                        print("\nAcompanhamento não cadastrado!\n")
-                    else:
-                        with open('Arquivos/Acompanhamentos.csv', 'w', newline='', encoding='utf-8') as arquivo:
-                            w = csv.writer(arquivo)
-                            w.writerows(dados)
-                        print("\nAlteração feita com sucesso!\n")
-
-                    continuar = input("Deseja continuar (S ou N): ")
-                    print("")
-                    if continuar == 'N':
-                        break
-            else:
-                print("Nenhum acompanhamento e preço cadastrados!\n")
-        elif opcao == 3:
-            if os.path.exists("Arquivos/Acompanhamentos.csv"):
-                with open('Arquivos/Acompanhamentos.csv', 'r', newline='', encoding='utf-8') as arquivo:
-                    dados = csv.reader(arquivo)
-
-                    for x in dados:
-                        print(f"Acompanhamento: {x[0]}, Preço: R$ {x[1]}\n")
-            else:
-                print("Nenhum acompanhamento e preço cadastrados!\n")
-        elif opcao == 4:
-            if os.path.exists("Arquivos/Acompanhamentos.csv"):
-                while True:
-                    nome = input("Digite o nome do acompanhamento que será apagado: ")
-
-                    dados = []
-                    encontrado = False
-
-                    with open('Arquivos/Acompanhamentos.csv', 'r', newline='', encoding='utf-8') as arquivo:
-                        r = csv.reader(arquivo)
-                        for x in r:
-                            if x[0] == nome:
-                                encontrado = True
-                            else:
-                                dados.append(x)
-                    if not encontrado:
-                        print("\nAcompanhamento não cadastrado!\n")
-                    else:
-                        with open('Arquivos/Acompanhamentos.csv', 'w', newline='', encoding='utf-8') as arquivo:
-                            w = csv.writer(arquivo)
-                            w.writerows(dados)
-                        print("\nExclusão feita com sucesso!\n")
-
-                    continuar = input("Deseja continuar (S ou N): ")
-                    print("")
-                    if continuar == 'N':
-                        break
-            else:
-                print("Nenhum acompanhamento e preço cadastrados!\n")
-        elif opcao == 5:
-            print("SAINDO DO MENU ACOMPANHAMENTOS\n")
+            print("SAINDO DO MENU \n")
             break
         else:
             print("Opção inválida!\n")
@@ -471,27 +359,20 @@ def Pedidos():
         opcao = int(input("Escolha uma opção do MENU GARÇOM: "))
         print("")
         if opcao == 1:
-            if os.path.exists("Arquivos/Carnes.csv") and os.path.exists("Arquivos/Acompanhamentos.csv") and os.path.exists("Arquivos/Bebidas.csv"):
-                with open('Arquivos/Carnes.csv', 'r', newline='', encoding='utf-8') as arquivo1, \
-                     open('Arquivos/Acompanhamentos.csv', 'r', newline='', encoding='utf-8') as arquivo2, \
-                     open('Arquivos/Bebidas.csv', 'r', newline='', encoding='utf-8') as arquivo3:
+            if os.path.exists("Arquivos/Lanches.csv") and os.path.exists("Arquivos/Bebidas.csv"):
+                with open('Arquivos/Lanches.csv', 'r', newline='', encoding='utf-8') as arquivo1, \
+                     open('Arquivos/Bebidas.csv', 'r', newline='', encoding='utf-8') as arquivo2:
 
                     r1 = csv.reader(arquivo1)
-                    carnes = [x for x in r1]
+                    lanches = [x for x in r1]
 
                     r2 = csv.reader(arquivo2)
-                    acompanhamentos = [x for x in r2]
-
-                    r3 = csv.reader(arquivo3)
-                    bebidas = [x for x in r3]
+                    bebidas = [x for x in r2]
 
                     print("CARDÁPIO")
-                    print("\nCARNES:")
-                    for x in carnes:
-                        print(f"Carne: {x[0]}, Preço: {x[1]}")
-                    print("ACOMPANHAMENTOS:")
-                    for x in acompanhamentos:
-                        print(f"Acompanhamento: {x[0]}, Preço: {x[1]}")
+                    print("\nLANCHES:")
+                    for x in lanches:
+                        print(f"Lanche: {x[0]}, Preço: {x[1]}")
                     print("BEBIDAS:")
                     for x in bebidas:
                         print(f"Bebida: {x[0]}, Preço: {x[1]}")
@@ -514,32 +395,21 @@ def Pedidos():
                                         break
 
                             if encontrado == True:
-                                carne = input("Digite a carne escolhida: ")
+                                lanches = input("Digite o lanche escolhido: ")
                                 encontrado = False
-                                for x in carnes:
-                                    if x[0] == carne:
-                                        encontrado = True
-                                if encontrado == True:
-                                    acompanhamento = input("Digite o acompanhamento escolhido: ")
-                                    encontrado = False
-                                    for x in acompanhamentos:
-                                        if x[0] == acompanhamento:
-                                            encontrado = True
-
-                                    if encontrado == True:
-                                        bebida = input("Digite a bebida escolhida: ")
+                                for x in lanches:
+                                    if x[0] == lanches:
                                         encontrado = False
-                                        for x in bebidas:
-                                            if x[0] == bebida:
-                                                encontrado = True
-
                                         if encontrado == True:
-                                            for x in carnes:
-                                                if x[0] == carne:
-                                                    preco_carne = float(x[1].replace(",", "."))
-                                            for x in acompanhamentos:
-                                                if x[0] == acompanhamento:
-                                                    preco_acompanhamento = float(x[1].replace(",", "."))
+                                            bebida = input("Digite a bebida escolhida: ")
+                                            encontrado = True
+                                for x in bebidas:
+                                    if x[0] == bebidas:
+                                        encontrado = False
+                                        if encontrado == True:
+                                            for x in lanches:
+                                                if x[0] == lanches:
+                                                    preco_lanches = float(x[1].replace(",", "."))
                                             for x in bebidas:
                                                 if x[0] == bebida:
                                                     preco_bebida = float(x[1].replace(",", "."))
@@ -547,7 +417,7 @@ def Pedidos():
                                             for x in dados:
                                                 if x[0] == nome and x[1] == numero:
                                                     valor_antigo = float(x[3].replace(",", "."))
-                                                    valor_gasto = preco_carne + preco_acompanhamento + preco_bebida
+                                                    valor_gasto = preco_lanches + preco_bebida
                                                     valor_total = valor_antigo + valor_gasto
                                                     x[3] = str(valor_total).replace(".", ",")
 
@@ -561,7 +431,7 @@ def Pedidos():
                                                     caixa_antigo = [x for x in r]
 
                                                 for x in caixa_antigo:
-                                                    preco_total1 = preco_carne + preco_acompanhamento + preco_bebida
+                                                    preco_total1 = preco_lanches + preco_bebida
                                                     preco_total2 = float(x[0].replace(",", "."))
                                                     preco_total3 = preco_total1 + preco_total2
 
@@ -573,7 +443,7 @@ def Pedidos():
                                                     dado = csv.writer(arquivo)
                                                     dado.writerow(caixa_novo)
                                             else:
-                                                preco_total1 = str(preco_carne + preco_acompanhamento + preco_bebida)
+                                                preco_total1 = str(preco_lanches + preco_bebida)
                                                 preco_total2 = []
                                                 preco_total2.append(preco_total1.replace(".", ","))
 
@@ -585,13 +455,9 @@ def Pedidos():
                                         else:
                                             print("\nBebida não cadastrada!\n")
                                     else:
-                                        print("\nAcompanhamento não cadastrado!\n")
+                                        print("\nLanche não cadastrado!\n")
                                 else:
-                                    print("\nCarne não cadastrada!\n")
-                            else:
-                                print("\nCliente não cadastrado!\n")
-                        else:
-                            print("\nNão há clientes cadastrados!\n")
+                                    print("\nCliente não cadastrado!\n")
 
                         continuar = input("Deseja continuar (S ou N): ")
                         print("")

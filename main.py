@@ -1,4 +1,4 @@
-from functions import Clientes, Carnes, Acompanhamentos, Bebidas, Pedidos, Caixa
+from functions import Clientes, Lanches,Bebidas, Pedidos, Caixa
 
 print("----------------------------------------")
 while True:
@@ -24,11 +24,10 @@ while True:
             print("""----------------------------------------\n
 (MENU SETOR ADMINISTRATIVO)
 Digite '1' para acessar a aba 'Clientes'
-Digite '2' para acessar a aba 'Carnes'
-Digite '3' para acessar a aba 'Acompanhamentos'
-Digite '4' para acessar a aba 'Bebidas'
-Digite '5' para acessar a aba 'Caixa'
-Digite '6' para sair
+Digite '2' para acessar a aba 'Lanches'
+Digite '3' para acessar a aba 'Bebidas'
+Digite '4' para acessar a aba 'Caixa'
+Digite '5' para sair
 """)
 
             print("----------------------------------------\n")
@@ -48,25 +47,15 @@ Digite '5' para sair do MENU CLIENTES
                 Clientes()
             elif opcao_administrativo == 2:
                 print("""----------------------------------------\n
-(MENU CADASTRAR CARNES)
-Digite '1' para cadastrar uma carne e seu preço
-Digite '2' para alterar o preço de uma carne
-Digite '3' para consultar as carnes disponíveis e seus preços
-Digite '4' para excluir uma carne e seu preço
-Digite '5' para sair do MENU CARNES
+(MENU CADASTRAR LANCHES)
+Digite '1' para cadastrar um lanche e seu preço
+Digite '2' para alterar o preço de um lanche
+Digite '3' para consultar os lanches disponíveis e seus preços
+Digite '4' para excluir um lanche e seu preço
+Digite '5' para sair do MENU LANCHES
 """)
-                Carnes()
+                Lanches()
             elif opcao_administrativo == 3:
-                print("""----------------------------------------\n
-(MENU CADASTRAR ACOMPANHAMENTOS)
-Digite '1' para cadastrar um acompanhamento e seu preço
-Digite '2' para alterar o preço de um acompanhamento
-Digite '3' para consultar os acompanhamentos disponíveis e seus preços
-Digite '4' para excluir um acompanhamento e seu preço
-Digite '5' para sair do MENU ACOMPANHAMENTOS
-""")
-                Acompanhamentos()
-            elif opcao_administrativo == 4:
                 print("""----------------------------------------\n
 (MENU CADASTRAR BEBIDAS)
 Digite '1' para cadastrar uma bebida e seu preço
@@ -76,14 +65,14 @@ Digite '4' para excluir uma bebida e seu preço
 Digite '5' para sair do MENU BEBIDAS
 """)
                 Bebidas()
-            elif opcao_administrativo == 5:
+            elif opcao_administrativo == 4:
                 print("""----------------------------------------\n
 (MENU CAIXA)
 Digite '1' para consultar o caixa
 Digite '2' para sair do MENU CAIXA
 """)
                 Caixa()
-            elif opcao_administrativo == 6:
+            elif opcao_administrativo == 5:
                 print("\nSAINDO DO MENU SETOR ADMINISTRATIVO\n\n----------------------------------------")
                 break
             else:
